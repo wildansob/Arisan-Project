@@ -17,11 +17,12 @@ const CardKocokArisan = () => {
   dispatch = useDispatch();
 
   const {dataParticipant} = useSelector(state => state.DetailArisanReducer);
-  const {arisanById} = useSelector(state => state.DetailArisanReducer);
+  const {dataDetailArisan} = useSelector(state => state.DetailArisanReducer);
 
-  const kocokArisanFunction = () => {
+  const kocokArisan = id => {
     dispatch({
       type: 'KOCOK_ARISAN',
+      id: id,
     });
   };
 
@@ -70,7 +71,7 @@ const CardKocokArisan = () => {
         <View style={styles.container}>
           <View style={styles.wrapperKiri}>
             <Text style={{fontWeight: 'bold', color: COLOR.Black}}>
-              {arisanById.title}
+              {dataDetailArisan.arisan?.title}
             </Text>
           </View>
         </View>
@@ -82,11 +83,16 @@ const CardKocokArisan = () => {
           }}>
           <View style={styles.wrapperKiri}>
             <Text style={styles.text}>Periode Undian</Text>
-            <Text style={{color: 'black'}}> {arisanById.lotteryDate}</Text>
+            <Text style={{color: 'black'}}>
+              {' '}
+              {dataDetailArisan.arisan?.lotteryDate}
+            </Text>
           </View>
           <View style={styles.wrapperKanan}>
             <Text style={styles.text}>Nilai Arisan</Text>
-            <Text style={{color: 'black'}}>Rp {arisanById.balance}</Text>
+            <Text style={{color: 'black'}}>
+              Rp {dataDetailArisan.arisan?.balance}
+            </Text>
           </View>
         </View>
       </View>
@@ -108,7 +114,10 @@ const CardKocokArisan = () => {
         </View>
         {/* konten */}
         <View>
-          <TouchableOpacity onPress={kocokArisanFunction}>
+          <TouchableOpacity
+            onPress={() => {
+              kocokArisan(dataDetailArisan.arisanId);
+            }}>
             <FastImage
               style={{width: moderateScale(180), height: moderateScale(180)}}
               source={KocokArisan}

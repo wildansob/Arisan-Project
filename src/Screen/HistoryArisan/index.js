@@ -69,9 +69,7 @@ const HistoryArisan = () => {
                   justifyContent: 'center',
                 }}>
                 <View style={styles.container}>
-                  <Text style={{fontWeight: 'bold', color: 'black'}}>
-                    {currentDate}{' '}
-                  </Text>
+                  <Text style={{fontWeight: 'bold'}}>{currentDate} </Text>
                 </View>
               </View>
             </View>

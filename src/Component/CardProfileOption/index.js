@@ -47,7 +47,6 @@ const CardProfileOption = ({
   setSecureEntry3,
   secureEntry3,
   BtnText,
-  editable
 }) => {
   const styles = StyleSheet.create({
     card: {
@@ -132,7 +131,6 @@ const CardProfileOption = ({
               onChangeText={onChangeText2}
               secureTextEntry={secureTextEntry2}
               color={COLOR.Black}
-              editable={editable}
             />
             {show ? (
               <TouchableOpacity
@@ -224,7 +222,6 @@ const CardProfileOption2 = ({
   keyboardType3 = 'default',
   keyboardType4 = 'default',
   secureTextEntry,
-  editable,
 }) => {
   const styles = StyleSheet.create({
     card: {
@@ -331,7 +328,6 @@ const CardProfileOption2 = ({
             placeholderTextColor={COLOR.light}
             onChangeText={onChangeText3}
             secureTextEntry={secureTextEntry}
-            editable={editable}
           />
         </View>
         {/* empat */}
@@ -391,5 +387,6 @@ const CardProfileOption2 = ({
   );
 };
 
+const styles = StyleSheet.create({});
 
 export {CardProfileOption, CardProfileOption2};

@@ -5,7 +5,6 @@ const initialState = {
   pemenangArisan: [],
   belumMenang: [],
   historyArisan: [],
-  arisanById: {},
 };
 const DetailArisanReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -45,11 +44,6 @@ const DetailArisanReducer = (state = initialState, action) => {
       return {
         ...state,
         historyArisan: action.payload,
-      };
-    case 'ARISAN_BY_ID_REDUCER':
-      return {
-        ...state,
-        arisanById: action.payload,
       };
 
     default:

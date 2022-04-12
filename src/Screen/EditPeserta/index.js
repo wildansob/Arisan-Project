@@ -46,7 +46,6 @@ const EditPeserta = () => {
         keyboardType2="phone-pad"
         BtnText="Edit Peserta"
         onPress={updatePeserta}
-        editable={false}
       />
     </ScrollView>
   );

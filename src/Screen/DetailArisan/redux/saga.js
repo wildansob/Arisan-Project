@@ -55,7 +55,6 @@ export function* deleteParticipant(action) {
     if (res.status === 200) {
       console.log('2');
       yield put({type: 'GET_PARTICIPANT'});
-      yield put({type: 'ARISAN_BY_ID'});
       navigate('Detail Arisan');
       deleteParticipantSuccessToast();
     } else {
@@ -88,7 +87,6 @@ export function* addParticipant(action) {
     if (res.status === 200) {
       console.log('2');
       yield put({type: 'GET_PARTICIPANT'});
-      yield put({type: 'ARISAN_BY_ID'});
       navigate('Detail Arisan');
     } else {
       AddParticipantFailedToast();
@@ -115,7 +113,6 @@ export function* editStatus(action) {
     if (res.status === 200) {
       console.log('2');
       yield put({type: 'GET_PARTICIPANT'});
-      yield put({type: 'ARISAN_BY_ID'});
       navigate('Detail Arisan');
     } else {
       navigate('Detail Arisan');
@@ -126,7 +123,7 @@ export function* editStatus(action) {
     EditStatusFailedToast();
   }
 }
-export function* kocokArisan() {
+export function* kocokArisan(action) {
   const kocokArisanAllMenangToast = () => {
     ToastAndroid.showWithGravity(
       'Semua Peserta Sudah Menang',
@@ -135,11 +132,8 @@ export function* kocokArisan() {
     );
   };
   try {
-    const id = yield select(
-      state => state.DetailArisanReducer.dataDetailArisan.arisanId,
-    );
     const {token} = yield select(state => state.loginReducer);
-    const res = yield apiKocokArisan(id, token);
+    const res = yield apiKocokArisan(action.id, token);
     console.log(res, '1');
     if (res.status === 200) {
       yield put({type: 'PEMENANG_ARISAN', payload: res.data.result});
@@ -164,7 +158,7 @@ export function* arisanById() {
     console.log(res, '1');
     if (res.status === 201) {
       console.log('2');
-      yield put({type: 'ARISAN_BY_ID_REDUCER', payload: res.data.result});
+      yield put({type: 'DETAIL_ARISAN', payload: res.data.result});
     } else {
       Alert.alert('Kesalahan Mengambil arisan By id');
       console.log(e);

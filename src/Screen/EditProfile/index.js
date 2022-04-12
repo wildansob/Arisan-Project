@@ -97,7 +97,6 @@ const EditProfile = () => {
         onPress={submitEditProfile}
         ImageLibrary={takeImage}
         pickedImage={image.uri}
-        editable={false}
       />
     </View>
   );

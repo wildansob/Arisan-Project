@@ -7,14 +7,9 @@ import {navigate} from '../../Helper/navigate';
 import {useSelector, useDispatch} from 'react-redux';
 
 const DetailArisan = () => {
-  useEffect(() => {
-    dispatch({type: 'ARISAN_BY_ID'});
-  }, []);
 
   const dispatch = useDispatch();
-  const {arisanById} = useSelector(state => state.DetailArisanReducer);
-
-  console.log(arisanById, 'mana ini');
+  const {dataDetailArisan} = useSelector(state => state.DetailArisanReducer);
 
   const updatePeserta = () => {
     dispatch(
@@ -45,14 +40,14 @@ const DetailArisan = () => {
             onPressModal2={() => {
               navigate('Detail Arisan');
             }}
-            title={arisanById.title}
-            dues={arisanById.dues}
-            balance={arisanById.balance}
-            participant={arisanById.totalParticipant}
-            date={arisanById.lotteryDate}
-            paymentPeriode={arisanById.paymentPeriod}
-            idArisan={arisanById.idArisan}
-            status={arisanById.status}
+            title={dataDetailArisan.arisan?.title}
+            dues={dataDetailArisan.arisan?.dues}
+            balance={dataDetailArisan.arisan?.balance}
+            participant={dataDetailArisan.arisan?.totalParticipant}
+            date={dataDetailArisan.arisan?.lotteryDate}
+            paymentPeriode={dataDetailArisan.arisan?.paymentPeriod}
+            idArisan={dataDetailArisan.arisan?.idArisan}
+            status={dataDetailArisan.arisan?.status}
           />
         </View>
       </ScrollView>

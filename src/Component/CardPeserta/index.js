@@ -83,11 +83,7 @@ const CardPeserta = ({CardColor = COLOR.Primary, dataKontak}) => {
           <View>
             <OptionsMenu
               customButton={
-                <Entypo
-                  name="dots-three-horizontal"
-                  size={moderateScale(16)}
-                  color={COLOR.Black}
-                />
+                <Entypo name="dots-three-horizontal" size={moderateScale(16)} />
               }
               destructiveIndex={1}
               options={['Edit Peserta', 'Hapus Peserta']}

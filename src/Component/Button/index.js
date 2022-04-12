@@ -47,7 +47,6 @@ const ButtonPrimary = ({
       borderColor: disabled ? 'grey' : borderColor,
       borderWidth: moderateScale(borderWidth),
       paddingHorizontal: moderateScale(paddingHorizontal),
-      elevation: 1,
     },
     text: {
       fontFamily: `${type}`,
@@ -58,18 +57,17 @@ const ButtonPrimary = ({
     },
   });
   return (
-    <TouchableOpacity
-      style={styles.btnPrimary}
-      onPress={onPress}
-      disabled={disabled}>
-      {isLoading === false ? (
-        <Text style={styles.text}>
-          {icon.active ? icon.content : null}
-          {text}
-        </Text>
-      ) : (
-        <ActivityIndicator size={'large'} color={'white'} />
-      )}
+    <TouchableOpacity onPress={onPress} disabled={disabled}>
+      <View style={styles.btnPrimary}>
+        {isLoading === false ? (
+          <Text style={styles.text}>
+            {icon.active ? icon.content : null}
+            {text}
+          </Text>
+        ) : (
+          <ActivityIndicator size={'large'} color={'white'} />
+        )}
+      </View>
     </TouchableOpacity>
   );
 };
